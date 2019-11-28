@@ -5,7 +5,7 @@ public class Board {
             for (int cell=0;cell<width;cell++ ) {
                 // условие проверки, что писать пробел или X
                 // Выше в задании мы определили закономерность, когда нужно проставлять X
-                int sum=row+cell+2;
+                int sum=row+cell;
                 if (sum%2==0) {
                     System.out.print("X");
                 } else {
