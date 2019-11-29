@@ -4,6 +4,7 @@ public class CheckPrimeNumber {
         boolean prime = true;
         for(int a=2;a<finish;a++) {
             if (finish % a == 0) prime = false;
+            break;
         }
         return prime;
     }
