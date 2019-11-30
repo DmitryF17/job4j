@@ -1,5 +1,11 @@
 package ru.job4j.calculator;
 
+/**
+*Package for calculator task.
+*@author Dmitry Faroynts (farodmin@yandex.ru)
+*@version $id$
+*@since 0.1
+*/
 public class  Calculator {
     public static void add(double first,double second){
         double result=first+second;
