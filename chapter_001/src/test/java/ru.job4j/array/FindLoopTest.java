@@ -9,10 +9,31 @@ public class FindLoopTest {
     @Test
     public void whenArrayHas5Then0() {
         FindLoop find = new FindLoop();
+        int s=3;
         int[] data = new int[] {5, 10, 3};
         int value = 5;
-        int result = find.indexOf(data, value);
+        int result = find.indexOf(data, value,s);
         int expect = 0;
+        assertThat(result, is(expect));
+    }
+    @Test
+    public void whenArrayHas7Then0() {
+        FindLoop find = new FindLoop();
+        int s=5;
+        int[] data = new int[] {5, 10, 3, 7, 15};
+        int value = 7;
+        int result = find.indexOf(data, value,s);
+        int expect = 3;
+        assertThat(result, is(expect));
+    }
+    @Test
+    public void whenArrayHas17Then0() {
+        FindLoop find = new FindLoop();
+        int s=7;
+        int[] data = new int[] {5, 10, 3, 4, 8, 17, 9};
+        int value = 17;
+        int result = find.indexOf(data, value,s);
+        int expect = 5;
         assertThat(result, is(expect));
     }
 }
