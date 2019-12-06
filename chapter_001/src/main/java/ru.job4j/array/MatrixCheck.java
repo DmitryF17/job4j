@@ -12,33 +12,32 @@ public class MatrixCheck {
 
     public static boolean isWin(char[][] board) {
         boolean result = false;
-        for (int i = 0; i < board.length; i++) {
-            int rw = 0;//подсчёт в рядах символа 'X'
-            int cw = 0;//подсчёт в колонках символа 'Х'
-            if (board[i][i] == 'X') {
-                for (int j = 0; j < board.length; j++) {
-                    if (board[i][j] == 'X') {
-                        rw++;
-                    }
-                    if (board[j][i] == 'X') {
-                        cw++;
-                    }
-                        if (rw>cw){
-                        char sign = board[i][j];
-                        System.out.print(sign);
-                        }
-                        if (cw>rw) {
+           for (int i = 0; i < board.length; i++) {
+               int rw = 0;//подсчёт в рядах символа 'X'
+               int cw = 0;//подсчёт в колонках символа 'Х'
+                if (board[i][i] == 'X') {
+                    for (int j = 0; j < board.length; j++) {
+                         if (board[i][j] == 'X') {
+                             rw++;
+                         }
+                         if (board[j][i] == 'X') {
+                             cw++;
+                         }
+                         if (rw>cw){
+                         char sign = board[i][j];
+                         System.out.print(sign);
+                         }
+                         if (cw>rw) {
                          char signrow = board[j][i];
                          System.out.println(signrow);
-                        }
+                         }
                     }
-
                 }
-                if (rw == board.length | cw == board.length) {
+                   if (rw == board.length || cw == board.length) {
                     result = true;
                     break;
-                }
-            }
+                   }
+           }
 
 
 
