@@ -38,15 +38,8 @@ public class MatrixCheck {
                     break;
                    }
            }
-
-
-
-
-
-        System.out.println();
-
-            return result;
-
+           System.out.println();
+           return result;
 }
 
         public static void main (String[]args){
