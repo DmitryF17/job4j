@@ -23,14 +23,6 @@ public class MatrixCheck {
                          if (board[j][i] == 'X') {
                              cw++;
                          }
-                         if (rw>cw){
-                         char sign = board[i][j];
-                         System.out.print(sign);
-                         }
-                         if (cw>rw) {
-                         char signrow = board[j][i];
-                         System.out.println(signrow);
-                         }
                     }
                 }
                    if (rw == board.length || cw == board.length) {
