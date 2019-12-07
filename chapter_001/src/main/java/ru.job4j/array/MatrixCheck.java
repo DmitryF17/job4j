@@ -12,27 +12,28 @@ public class MatrixCheck {
 
     public static boolean isWin(char[][] board) {
         boolean result = false;
-           for (int i = 0; i < board.length; i++) {
-               int rw = 0; //подсчёт в рядах символа 'X'
-               int cw = 0; //подсчёт в колонках символа 'Х'
-                if (board[i][i] == 'X') {
-                    for (int j = 0; j < board.length; j++) {
-                         if (board[i][j] == 'X') {
-                             rw++;
-                         }
-                         if (board[j][i] == 'X') {
-                             cw++;
-                         }
+        for (int i = 0; i < board.length; i++) {
+            int rw = 0; //подсчёт в рядах символа 'X'
+            int cw = 0; //подсчёт в колонках символа 'Х'
+            if (board[i][i] == 'X') {
+                for (int j = 0; j < board.length; j++) {
+                    if (board[i][j] == 'X') {
+                        rw++;
+                    }
+                    if (board[j][i] == 'X') {
+                        cw++;
                     }
                 }
-                   if (rw == board.length || cw == board.length) {
-                    result = true;
-                    break;
-                   }
-           }
-           System.out.println();
-           return result;
-}
+            }
+            if (rw == board.length || cw == board.length) {
+                result = true;
+                break;
+            }
+        }
+        System.out.println();
+        return result;
+
+    }
 
         public static void main(String[] args) {
             char[][] hasWinVertical = {
@@ -65,7 +66,7 @@ public class MatrixCheck {
             boolean lose = isWin(notWin);
             System.out.println("A board has a winner : " + lose);
         }
-    }
+}
 
 
 
