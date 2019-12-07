@@ -16,16 +16,16 @@ public class Defragment {
      */
     public static String[] compress(String[] array) {
         for (int index = 0; index < array.length; index++) {
-            String cell = array[index];// search  null cell
+            String cell = array[index]; // search  null cell
             if (cell == null) {
-                  int  ind=index;
-               while (ind!=array.length){
-                  if (array[ind]!=null) {// search full cell
-                      array[index]=array[ind];// change null on full
-                      array[ind]=null;
-                      break;// break if get replacing
+                  int  ind = index;
+               while (ind != array.length) {
+                  if (array[ind] != null) { // search full cell
+                      array[index] = array[ind]; // change null on full
+                      array[ind] = null;
+                      break; // break if get replacing
                   }
-                  ind++;// go over to next cell
+                  ind++; // go over to next cell
                }
             }
             System.out.print(array[index] + " ");

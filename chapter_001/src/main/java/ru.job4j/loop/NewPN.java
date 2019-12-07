@@ -9,7 +9,7 @@ public class NewPN<count> {
         int count = 1;
         for (int x = 3; x <= finish; x++) {
             boolean a = prime.check(x);
-            if (a == true) {
+            if (a) {
                 count++;
             }
         }

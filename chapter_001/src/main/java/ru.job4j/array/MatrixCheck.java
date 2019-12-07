@@ -13,8 +13,8 @@ public class MatrixCheck {
     public static boolean isWin(char[][] board) {
         boolean result = false;
            for (int i = 0; i < board.length; i++) {
-               int rw = 0;//подсчёт в рядах символа 'X'
-               int cw = 0;//подсчёт в колонках символа 'Х'
+               int rw = 0; //подсчёт в рядах символа 'X'
+               int cw = 0; //подсчёт в колонках символа 'Х'
                 if (board[i][i] == 'X') {
                     for (int j = 0; j < board.length; j++) {
                          if (board[i][j] == 'X') {
@@ -34,7 +34,7 @@ public class MatrixCheck {
            return result;
 }
 
-        public static void main (String[]args){
+        public static void main(String[] args) {
             char[][] hasWinVertical = {
                     {'_', '_', 'X', '_', '_'},
                     {'_', '_', 'X', '_', '_'},
