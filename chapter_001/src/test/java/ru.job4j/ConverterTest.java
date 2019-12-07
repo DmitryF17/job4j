@@ -19,18 +19,18 @@ public class ConverterTest {
     }
 
     @Test
-    public void EuroToruble() {
+    public void eurotoruble() {
         int in = 3;
         int expected = 210;
-        int out = Converter.EuroToruble(in);
+        int out = Converter.eurotoruble(in);
         Assert.assertEquals(expected, out);
     }
 
     @Test
-    public void DollarToruble(){
+    public void dollartoruble(){
         int in = 4;
         int expected = 240;
-        int out = Converter.DollarToruble(in);
+        int out = Converter.dollartoruble(in);
         Assert.assertEquals(expected,out);
 }
 }
