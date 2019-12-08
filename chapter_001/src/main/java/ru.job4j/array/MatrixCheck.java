@@ -26,8 +26,8 @@ public class MatrixCheck {
                      }
                          if (rw == board.length || cw == board.length) { // условие выигрыша
                              result = true;
-                             break; // прерывание цикла при выполнении условия выигрыша
                          }
+                     break; // прерывание цикла при выполнении условия проигрыша
                  }
         }
         return result;
