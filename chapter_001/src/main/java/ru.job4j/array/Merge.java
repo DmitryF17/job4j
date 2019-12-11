@@ -9,46 +9,36 @@ public class Merge {
         int l = 0;
         int r = 0;
         int t = 0;
-        if(left.length == 0){
-            while(r<right.length){
-                rsl[t] = right[r];
-                r++;
-                t++;
-            }
-        }
-        if(right.length == 0){
-            while(l<left.length) {
+
+        while(t < right.length + left.length){
+        if (l < left.length && r < right.length) {
+            if (left[l] <= right[r]) {
                 rsl[t] = left[l];
                 l++;
-                t++;
+            } else {
+                rsl[t] = right[r];
+                r++;
             }
-        }
-        while (l < left.length && r < right.length) {
-           if(left[l] <= right[r]){
-               rsl[t] = left[l];
-                   l++;
-               }
-           else {
-               rsl[t] = right[r];
-               r++;
-               }
             t++;
-           if(l>=left.length){
-               while(r<right.length){
-                   rsl[t] = right[r];
-                   r++;
-                   t++;
-               }
-           }
-            if(r>=right.length){
-                while(l<left.length){
+            if (l >= left.length) {
+                while (r < right.length) {
+                    rsl[t] = right[r];
+                    r++;
+                    t++;
+                }
+            }
+            if (r >= right.length) {
+                while (l < left.length) {
                     rsl[t] = left[l];
                     l++;
                     t++;
                 }
             }
-
-
+        }else{
+             rsl[t] = right[r];
+             r++;
+             t++;
+            }
         }
         return rsl;
     }
