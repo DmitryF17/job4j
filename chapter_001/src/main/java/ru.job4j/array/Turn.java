@@ -1,5 +1,4 @@
 package ru.job4j.array;
-
 public class Turn {
     public int[] back(int[] input) {
             for (int index = 0; index < input.length / 2; index++) {
@@ -9,7 +8,4 @@ public class Turn {
             }
             return input;
         }
-
-
-
 }

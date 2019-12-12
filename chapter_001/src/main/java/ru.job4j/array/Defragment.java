@@ -1,5 +1,4 @@
 package ru.job4j.array;
-
 /**
  * Package for Defragment
  *
@@ -16,23 +15,22 @@ public class Defragment {
      */
     public static String[] compress(String[] array) {
         for (int index = 0; index < array.length; index++) {
-            String cell = array[index]; // search  null cell
+            String cell = array[index];
             if (cell == null) {
                   int  ind = index;
                while (ind != array.length) {
-                  if (array[ind] != null) { // search full cell
-                      array[index] = array[ind]; // change null on full
+                  if (array[ind] != null) {
+                      array[index] = array[ind];
                       array[ind] = null;
-                      break; // break if get replacing
+                      break;
                   }
-                  ind++; // go over to next cell
+                  ind++;
                }
             }
             System.out.print(array[index] + " ");
         }
         return array;
     }
-
     /**
      * Metod main
      * @param args [] string

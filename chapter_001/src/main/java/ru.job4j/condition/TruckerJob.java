@@ -1,5 +1,4 @@
 package ru.job4j.condition;
-
 public class TruckerJob {
     public static void main(String[] args) {
         Driver steve = new Driver();

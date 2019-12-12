@@ -8,5 +8,4 @@ public class SqAreaTest {
    double out=SqArea.square(6,2);
    Assert.assertEquals(expected,out,0.01);
     }
-
 }
