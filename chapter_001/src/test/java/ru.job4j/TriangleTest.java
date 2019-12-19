@@ -13,4 +13,9 @@ public class TriangleTest {
         boolean result = Triangle.exist(1.0, 1.0, 2.0);
         assertThat(result, is(false));
     }
+    @Test
+    public void areares(){
+        double result = Triangle.area(3,1,0,2,1,2);
+        assertThat(result, is(0.5000000000000013));
+    }
 }
