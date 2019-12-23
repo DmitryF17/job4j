@@ -10,7 +10,7 @@ public class Triangle {
         this.third = c;
     }
     public static double period(double ap, double bp, double cp) {
-        if(exist(ap, bp, cp)) {
+        if (exist(ap, bp, cp)) {
            double p = (ap + bp + cp) / 2;
            return p;
         }
@@ -31,7 +31,7 @@ public class Triangle {
         return rsl;
     }
     public static boolean exist(double ab, double ac, double bc) {
-        if(ab + ac == bc | ab + bc == ac | ac + bc == ab){
+        if (ab + ac == bc | ab + bc == ac | ac + bc == ab) {
             return false;
         }
             return true;

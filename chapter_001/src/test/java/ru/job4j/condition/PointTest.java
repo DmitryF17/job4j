@@ -3,7 +3,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertEquals;
- public class PointTest{
+ public class PointTest {
      @Test
      public void dist2d() {
          Point a = new Point(0, 0);
