@@ -5,17 +5,17 @@ import static org.junit.Assert.assertThat;
 public class TriangleTest {
     @Test
     public void whenExist() {
-        boolean result = Triangle.exist(2.0,2.0,2.0);
+        boolean result = Triangle.exist(2.0, 2.0, 2.0);
         assertThat(result, is(true));
     }
     @Test
     public void whenNotExist() {
-        boolean result = Triangle.exist(1.0,1.0,2.0);
+        boolean result = Triangle.exist(1.0, 1.0, 2.0);
         assertThat(result, is(false));
     }
     @Test
     public void areares() {
-        double result = Triangle.area(3,1,0,2,1,2);
+        double result = Triangle.area(3, 1, 0, 2, 1, 2);
         assertThat(result, is(0.5000000000000013));
     }
 }

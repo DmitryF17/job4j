@@ -24,12 +24,12 @@ public class MaxTest {
         assertThat(result, is(1));
     }
     @Test
-    public void MaxForThree() {
+    public void maxforthree() {
         int result = Max.max(1, 2, 3);
         assertThat(result, is(3));
     }
     @Test
-    public void MaxForFour() {
+    public void maxforfour() {
         int result = Max.max(1, 2, 3, 4);
         assertThat(result, is(4));
     }

@@ -24,10 +24,10 @@ public class ConverterTest {
         Assert.assertEquals(expected, out);
     }
     @Test
-    public void dollartoruble(){
+    public void dollartoruble() {
         int in = 4;
         int expected = 240;
         int out = Converter.dollartoruble(in);
-        Assert.assertEquals(expected,out);
+        Assert.assertEquals(expected, out);
 }
 }
