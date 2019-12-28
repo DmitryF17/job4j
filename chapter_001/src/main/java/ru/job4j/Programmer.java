@@ -1,4 +1,4 @@
-package ru.job4j.tracker;
+package ru.job4j;
 public class Programmer extends Engeneer {
     private String programm;
     public Programmer() {

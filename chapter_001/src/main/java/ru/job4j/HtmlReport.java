@@ -1,4 +1,4 @@
-package ru.job4j.tracker;
+package ru.job4j;
 public class HtmlReport extends TextReport {
     @Override
         public String generate(String name, String body) {
