@@ -32,7 +32,7 @@ public class Tracker {
 		public Item findById(String id) {
 			Item nameid = null;
 			Item[] itemsarea = new Item[position];
-			for (int index = 0; index < itemsarea.length; index++) {
+			for (int index = 0; index < position; index++) {
 				Item item = this.items[index];
 				if (item.getId().equals(id)) {
 					nameid = item;
