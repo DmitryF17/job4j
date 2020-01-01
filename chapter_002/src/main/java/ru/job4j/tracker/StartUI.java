@@ -18,9 +18,19 @@ public class StartUI {
 				Item[] item = tracker.findAll();
 				System.out.println(item);
 			} else if (select == 2) {
-				System.out.println("Edit item ");
+                System.out.println("Replace item");
+				System.out.println("Exit id ");
+                String id = scanner.nextLine();
+				System.out.println("Exit name");
+             String name = scanner.nextLine();
+				Item item = new Item(name);
+				tracker.replace(id, item);
+                System.out.println(item);
 			} else if (select == 3) {
-                System.out.println("Delete item ");
+                System.out.println(" Delete item ");
+                System.out.print("Enter id: ");
+                String id = scanner.nextLine();
+                Item[] item = tracker.delete(id);
             } else if (select == 4) {
                 System.out.println("Find item by id");
 				System.out.print("Enter id");
