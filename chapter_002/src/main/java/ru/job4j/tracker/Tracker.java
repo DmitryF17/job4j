@@ -37,23 +37,34 @@ public class Tracker {
     }
 
     public Item findById(String id) {
-        return items[indexOf(id)];
+        int i = indexOf(id);
+        if (i != -1) {
+            return items[i];
+        }
+        return null;
     }
 
-    public Item replace(String id, Item item) {
-        items[indexOf(id)] = item;
-        return item;
+    public boolean replace(String id, Item item) {
+        boolean res = false;
+        int pos = indexOf(id);
+        if (pos != -1) {
+            res = true;
+            items[pos] = item;
+            item.getName();
+        }
+        return res;
     }
 
-    public Item[] delete(String id) {
-        Item[] item = new Item[position];
-        int start = indexOf(id) + 1;
-        int distPos = indexOf(id);
-        int size = position - indexOf(id) - 1;
-        System.arraycopy(item, start, item, distPos, size);
-        position--;
-        item[position] = null;
-        return item;
+    public boolean delete(String id) {
+        boolean res = false;
+        int pos = indexOf(id);
+        if (pos != -1) {
+            res = true;
+            items[pos] = null;
+            System.arraycopy(items, pos + 1, items, pos, position - pos);
+            position--;
+        }
+        return res;
     }
 
     private int indexOf(String id) {
@@ -67,6 +78,7 @@ public class Tracker {
         return rsl;
     }
 }
+
 			
 
 
