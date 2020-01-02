@@ -18,7 +18,9 @@ public class StartUI {
             } else if (select == 1) {
                 System.out.println("Show all items ");
                 Item[] item = tracker.findAll();
-                System.out.println(item);
+                for (int i = 0; i < item.length; i++) {
+                    System.out.println(item[i]);
+                }
             } else if (select == 2) {
                 System.out.println("Replace item");
                 System.out.println("Exit id ");
@@ -51,7 +53,9 @@ public class StartUI {
                 System.out.print("Enter name");
                 String name = scanner.nextLine();
                 Item[] item = tracker.findByName(name);
-                System.out.println(item);
+                for (int i = 0; i < item.length; i++) {
+                    System.out.println(item[i]);
+                }
             } else if (select == 6) {
                 System.out.println("Exit Program ");
                 run = 1;
