@@ -71,7 +71,6 @@ public class Tracker {
         }
         return res;
     }
-
     private int indexOf(String id) {
         int rsl = -1;
         for (int index = 0; index < position; index++) {
