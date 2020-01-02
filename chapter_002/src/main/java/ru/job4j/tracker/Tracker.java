@@ -49,8 +49,8 @@ public class Tracker {
         int pos = indexOf(id);
         if (pos != -1) {
             res = true;
+            item.setId(items[pos].getId());
             items[pos] = item;
-            item.getName();
         }
         return res;
     }
