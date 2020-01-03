@@ -49,13 +49,9 @@ public class Tracker {
         int pos = indexOf(id);
         if (pos != -1) {
             res = true;
-<<<<<<< HEAD
             item.setId(items[pos].getId());
             items[pos] = item;
-=======
-            items[pos] = item;
             item.getName();
->>>>>>> 2b7fd7b...  2.1. Реализация класса StartUI [#199697]
         }
         return res;
     }
@@ -71,6 +67,7 @@ public class Tracker {
         }
         return res;
     }
+
     private int indexOf(String id) {
         int rsl = -1;
         for (int index = 0; index < position; index++) {
