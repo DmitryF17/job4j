@@ -1,24 +1,24 @@
 package ru.job4j.tracker;
 
 public class StartUI {
-    public void init(Input input, Tracker tracker) {
-        int run = 0;
-        while (run != 1) {
-            this.showMenu();
-            int select = Integer.valueOf(input.askStr("Select "));
-            if (select == 0) {
-                System.out.println("=== Create a new Item ===");
+	
+	public static void createItem(Input input, Tracker tracker) {
+	            System.out.println("=== Create a new Item ===");
                 String name = input.askStr("Enter name: ");
                 Item item = new Item(name);
                 tracker.add(item);
-            } else if (select == 1) {
-                System.out.println("Show all items ");
+	}	
+	
+    public static void showAllItem(Input input, Tracker tracker) {
+	           System.out.println("Show all items ");
                 Item[] item = tracker.findAll();
                 for (int i = 0; i < item.length; i++) {
                     System.out.println(item[i]);
-                }
-            } else if (select == 2) {
-                System.out.println("Replace item");
+				}
+	}			
+				
+	public static void replaceItem(Input input, Tracker tracker) {
+				System.out.println("Replace item");
                 String id = input.askStr("Exit id: ");
                 String name = input.askStr("Exit name: ");
                 Item item = new Item(name);
@@ -27,16 +27,20 @@ public class StartUI {
                 } else {
                     System.out.println("Item was not detected");
                 }
-            } else if (select == 3) {
-                System.out.println(" Delete item ");
+	}			
+				
+	public static void deleteItem(Input input, Tracker tracker) {
+				System.out.println(" Delete item ");
                 String id = input.askStr("Enter id: ");
                 if (tracker.delete(id)) {
                     System.out.println("Item was detected");
                 } else {
                     System.out.println("Item was not detected");
                 }
-            } else if (select == 4) {
-                System.out.println("Find item by id");
+	}	
+	
+    public static void findId(Input input, Tracker tracker) {
+	            System.out.println("Find item by id");
                 String id = input.askStr("Enter id: ");
                 Item item = tracker.findById(id);
                 if (item != null) {
@@ -44,13 +48,33 @@ public class StartUI {
                 } else {
                     System.out.println("Item was not found");
                 }
-            } else if (select == 5) {
-                System.out.println("Find items by name");
+    }	
+	
+	public static void findName(Input input, Tracker tracker){
+	            System.out.println("Find items by name");
                 String name = input.askStr("Enter name: ");
                 Item[] item = tracker.findByName(name);
                 for (int i = 0; i < item.length; i++) {
                     System.out.println(item[i]);
                 }
+    }			
+    public void init(Input input, Tracker tracker) {
+        int run = 0;
+        while (run != 1) {
+            this.showMenu();
+            int select = Integer.valueOf(input.askStr("Select "));
+           if (select == 0) {
+			   StartUI.createItem(input, tracker);
+            } else if (select == 1) {
+                StartUI.showAllItem(input, tracker);
+            } else if (select == 2) {
+                StartUI.replaceItem(input, tracker);
+            } else if (select == 3) {
+                StartUI.deleteItem(input, tracker);
+            } else if (select == 4) {
+                StartUI.findId(input, tracker);
+            } else if (select == 5) {
+                StartUI.findName(input, tracker);
             } else if (select == 6) {
                 System.out.println("Exit Program ");
                 run = 1;
@@ -73,6 +97,7 @@ public class StartUI {
         Input input = new Consoleinput();
         Tracker tracker = new Tracker();
         new StartUI().init(input, tracker);
+        StartUI.createItem(input, tracker);
     }
 
 }
