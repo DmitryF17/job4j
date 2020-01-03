@@ -47,7 +47,11 @@ public class StartUI {
                 System.out.print("Enter id");
                 String id = scanner.nextLine();
                 Item item = tracker.findById(id);
-                System.out.println(item);
+                if (item != null) {
+                    System.out.println("Find item by id " + item);
+                } else {
+                    System.out.println("Item was not found");
+                }
             } else if (select == 5) {
                 System.out.println("Find items by name");
                 System.out.print("Enter name");
