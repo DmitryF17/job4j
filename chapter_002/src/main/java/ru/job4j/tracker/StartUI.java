@@ -57,7 +57,7 @@ public class StartUI {
                     System.out.println(item[i]);
                 }
             } else if (select == 6) {
-                System.out.println("Exit Program ");
+                System.out.println("Exit Program");
                 run = 1;
             }
         }
