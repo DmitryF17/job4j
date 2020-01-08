@@ -6,24 +6,24 @@ public class StartUI {
         boolean run = true;
         while (run) {
             this.showMenu(actions);
-            int select = Integer.valueOf(input.askStr("Select "));
+            int select = input.askInt("Select: ", actions.length);
             UserAction action = actions[select];
             run = action.execute(input, tracker);
         }
     }
 
     private void showMenu(UserAction[] actions) {
-        System.out.println("Menu. ");
+        System.out.println("Menu.");
         for (int index = 0; index < actions.length; index++) {
             System.out.println(index + ". " + actions[index].name());
         }
     }
 
     public static void main(String[] args) {
-        Input input = new Consoleinput();
+        Input validate = new ValidateInput();
         Tracker tracker = new Tracker();
-        UserAction[] actions = {new CreateAction(), new FindAllAction(), new ReplaceAction(), new DeleteAction(), new FindIdAction(), new FindNameAction(), new ExitAction()};
-        new StartUI().init(input, tracker, actions);
+        UserAction[] actions = {new CreateAction()};
+        new StartUI().init(validate, tracker, actions);
     }
 }
 
