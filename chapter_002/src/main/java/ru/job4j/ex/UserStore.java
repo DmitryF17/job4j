@@ -28,10 +28,10 @@ public class UserStore {
         return rsl;
     }
 
-    public static void main(String[] args) throws UserNotFoundException {
+    public static void main(String[] args) {
         User[] users = {new User("Petr", true)};
-        User user = findUser(users, "Petr");
         try {
+            User user = findUser(users, "Petr");
             if (validate(user)) {
                 System.out.println("This user has an access");
             }
