@@ -55,7 +55,7 @@ public class FindAllActionTest {
         Item item = new Item("test");
         tracker.add(item);
         FindNameAction act = new FindNameAction();
-        act.execute(new StubInput(new String[] {"test"}), tracker);
+        act.execute(new StubInput(new String[]{"test"}), tracker);
         String expect = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
                 .add(item.getId() + " " + item.getName())
                 .toString();
