@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.Arrays;
 
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNull.nullValue;
@@ -17,7 +18,7 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         CreateAction temp = new CreateAction();
         temp.execute(input, tracker);
-        Item created = tracker.findAll()[0];
+        Item created = tracker.findAll().get(0);
         Item expected = new Item("Fix PC");
         assertThat(created.getName(), is(expected.getName()));
     }
@@ -56,7 +57,7 @@ public class StartUITest {
     public void whenExit() {
         StubInput input = new StubInput(new String[]{"0"});
         StubAction action = new StubAction();
-        new StartUI().init(input, new Tracker(), new UserAction[]{action});
+        new StartUI().init(input, new Tracker(), Arrays.asList(new UserAction[]{action}));
         assertThat(action.isCall(), is(true));
     }
 }
