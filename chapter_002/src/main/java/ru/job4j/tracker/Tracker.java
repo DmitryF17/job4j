@@ -60,17 +60,15 @@ public class Tracker {
         if (pos != -1) {
             res = true;
             items.remove(pos);
-            System.arraycopy(items, pos + 1, items, pos, position - pos);
-            position--;
         }
         return res;
     }
 
     private int indexOf(String id) {
         int rsl = -1;
-        for (int index = 0; index < position; index++) {
-            if (items.get(index).getId().equals(id)) {
-                rsl = index;
+        for (Item item : items) {
+            if (item.getId().equals(id)) {
+                rsl++;
                 break;
             }
         }
