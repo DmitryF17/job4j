@@ -16,7 +16,7 @@ public class DepartmentsTest {
                 "k1/sk1/ssk2", "k2", "k2/sk1/ssk1", "k2/sk1/ssk2");
         List<String> expect = Arrays.asList("k1", "k1/sk1", "k1/sk1/ssk1",
                 "k1/sk1/ssk2", "k1/sk2", "k2", "k2/sk1", "k2/sk1/ssk1", "k2/sk1/ssk2");
-        assertThat(Departments.sortAsc(Departments.fillGaps(input)), is(expect));
+        assertThat(Departments.fillGaps(input), is(expect));
     }
 
     @Test
