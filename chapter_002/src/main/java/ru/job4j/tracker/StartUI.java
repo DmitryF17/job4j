@@ -2,16 +2,19 @@ package ru.job4j.tracker;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 
 public class StartUI {
 
-    public void init(Input input, Tracker tracker, List<UserAction> actions) {
+    private static Consumer<String> output;
+
+    public void init(Input input, Tracker tracker, List<UserAction> actions, Consumer<String> output) {
         boolean run = true;
         while (run) {
             this.showMenu(actions);
             int select = input.askInt("Select: ", actions.size());
             UserAction action = actions.get(select);
-            run = action.execute(input, tracker);
+            run = action.execute(input, tracker, output);
         }
     }
 
@@ -34,7 +37,7 @@ public class StartUI {
         actions.add(new FindNameAction());
         actions.add(new ReplaceAction());
         actions.add(new ExitAction());
-        new StartUI().init(validate, tracker, actions);
+        new StartUI().init(input, tracker, actions, output);
     }
 }
 
