@@ -6,11 +6,14 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.StringJoiner;
+import java.util.function.Consumer;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
 public class FindAllActionTest {
+
+    private Consumer<String> output;
 
     @Test
     public void whenCheckOutput() {
@@ -21,7 +24,7 @@ public class FindAllActionTest {
         Item item = new Item("fix bug");
         tracker.add(item);
         FindAllAction act = new FindAllAction();
-        act.execute(new StubInput(new String[]{}), tracker);
+        act.execute(new StubInput(new String[]{}), tracker, output);
         String expect = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
                 .add(item.getId() + " " + item.getName())
                 .toString();
@@ -38,7 +41,7 @@ public class FindAllActionTest {
                 new String[]{"0"}
         );
         StubAction action = new StubAction();
-        new StartUI().init(input, new Tracker(), Arrays.asList(new UserAction[]{action}));
+        new StartUI().init(input, new Tracker(), Arrays.asList(new UserAction[]{action}), output);
         String expect = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
                 .add("Menu.")
                 .add("0. Stub Action")
@@ -56,7 +59,7 @@ public class FindAllActionTest {
         Item item = new Item("test");
         tracker.add(item);
         FindNameAction act = new FindNameAction();
-        act.execute(new StubInput(new String[]{"test"}), tracker);
+        act.execute(new StubInput(new String[]{"test"}), tracker, output);
         String expect = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
                 .add(item.getId() + " " + item.getName())
                 .toString();

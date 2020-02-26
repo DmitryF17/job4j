@@ -1,5 +1,7 @@
 package ru.job4j.tracker;
 
+import java.util.function.Consumer;
+
 public class StubInput implements Input {
     private String[] answers;
     private int position = 0;
@@ -20,7 +22,7 @@ public class StubInput implements Input {
     }
 
     @Override
-    public int askInt(String question, int max) {
+    public int askInt(String question, int max, Consumer<String> output) {
         return askInt(question);
     }
 

@@ -5,19 +5,22 @@ import org.junit.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.Arrays;
+import java.util.function.Consumer;
 
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.Assert.assertThat;
 
 public class StartUITest {
+    private Consumer<String> output;
+
     @Test
     public void whenAddItem() {
         String[] answers = {"Fix PC"};
         Input input = new StubInput(answers);
         Tracker tracker = new Tracker();
         CreateAction temp = new CreateAction();
-        temp.execute(input, tracker);
+        temp.execute(input, tracker, output);
         Item created = tracker.findAll().get(0);
         Item expected = new Item("Fix PC");
         assertThat(created.getName(), is(expected.getName()));
@@ -30,7 +33,7 @@ public class StartUITest {
         tracker.add(item);
         String[] answers = {item.getId(), "replaced item"};
         ReplaceAction temp = new ReplaceAction();
-        temp.execute(new StubInput(answers), tracker);
+        temp.execute(new StubInput(answers), tracker, output);
         Item replaced = tracker.findById(item.getId());
         assertThat(replaced.getName(), is("replaced item"));
     }
@@ -48,7 +51,7 @@ public class StartUITest {
         tracker.add(item3);
         String[] answers = {item.getId(), item1.getId(), item2.getId(), item3.getId()};
         DeleteAction temp = new DeleteAction();
-        temp.execute(new StubInput(answers), tracker);
+        temp.execute(new StubInput(answers), tracker, output);
         Item deleted = tracker.findById(item.getId());
         assertThat(deleted, is(nullValue()));
     }
@@ -57,7 +60,7 @@ public class StartUITest {
     public void whenExit() {
         StubInput input = new StubInput(new String[]{"0"});
         StubAction action = new StubAction();
-        new StartUI().init(input, new Tracker(), Arrays.asList(new UserAction[]{action}));
+        new StartUI().init(input, new Tracker(), Arrays.asList(new UserAction[]{action}), output);
         assertThat(action.isCall(), is(true));
     }
 }
