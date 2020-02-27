@@ -22,7 +22,7 @@ public class StubInput implements Input {
     }
 
     @Override
-    public int askInt(String question, int max, Consumer<String> output) {
+    public int askInt(String question, int max) {
         return askInt(question);
     }
 

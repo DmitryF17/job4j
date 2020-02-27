@@ -11,17 +11,18 @@ public class StartUI {
     public void init(Input input, Tracker tracker, List<UserAction> actions, Consumer<String> output) {
         boolean run = true;
         while (run) {
-            this.showMenu(actions);
-            int select = input.askInt("Select: ", actions.size(), output);
+            this.showMenu(actions, output);
+            int select = input.askInt("Select: ", actions.size());
             UserAction action = actions.get(select);
             run = action.execute(input, tracker, output);
         }
     }
 
-    private void showMenu(List<UserAction> actions) {
-        System.out.println("Menu.");
-        for (int index = 0; index < actions.size(); index++) {
-            output.accept(index + ". " + actions.get(index).name());
+    private void showMenu(List<UserAction> actions, Consumer<String> output) {
+        output.accept("Menu.");
+        int index = 0;
+        for (UserAction user : actions) {
+            output.accept(index++ + ". " + user.name());
         }
     }
 

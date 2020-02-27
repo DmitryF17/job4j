@@ -1,7 +1,6 @@
 package ru.job4j.tracker;
 
 import java.util.Scanner;
-import java.util.function.Consumer;
 
 public class ConsoleInput implements Input {
     private Scanner scanner = new Scanner(System.in);
@@ -18,7 +17,7 @@ public class ConsoleInput implements Input {
     }
 
     @Override
-    public int askInt(String question, int max, Consumer<String> output) {
+    public int askInt(String question, int max) {
         int select = askInt(question);
         if (select < 0 || select > max) {
             throw new IllegalStateException(String.format("Out of about %s > [0, %s]", select, max));
