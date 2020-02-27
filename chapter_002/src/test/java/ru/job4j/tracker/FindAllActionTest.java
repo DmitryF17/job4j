@@ -24,7 +24,7 @@ public class FindAllActionTest {
         Item item = new Item("fix bug");
         tracker.add(item);
         FindAllAction act = new FindAllAction();
-        act.execute(new StubInput(new String[]{}), tracker, output);
+        act.execute(new StubInput(new String[]{}), tracker, System.out::println);
         String expect = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
                 .add(item.getId() + " " + item.getName())
                 .toString();
@@ -41,7 +41,7 @@ public class FindAllActionTest {
                 new String[]{"0"}
         );
         StubAction action = new StubAction();
-        new StartUI().init(input, new Tracker(), Arrays.asList(new UserAction[]{action}), output);
+        new StartUI().init(input, new Tracker(), Arrays.asList(new UserAction[]{action}), System.out::println);
         String expect = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
                 .add("Menu.")
                 .add("0. Stub Action")
@@ -59,7 +59,7 @@ public class FindAllActionTest {
         Item item = new Item("test");
         tracker.add(item);
         FindNameAction act = new FindNameAction();
-        act.execute(new StubInput(new String[]{"test"}), tracker, output);
+        act.execute(new StubInput(new String[]{"test"}), tracker, System.out::println);
         String expect = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
                 .add(item.getId() + " " + item.getName())
                 .toString();

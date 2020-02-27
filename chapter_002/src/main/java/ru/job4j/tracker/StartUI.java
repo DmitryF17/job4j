@@ -38,7 +38,7 @@ public class StartUI {
         actions.add(new FindNameAction());
         actions.add(new ReplaceAction());
         actions.add(new ExitAction());
-        new StartUI().init(input, tracker, actions, output);
+        new StartUI().init(input, tracker, actions, System.out::println);
     }
 }
 
