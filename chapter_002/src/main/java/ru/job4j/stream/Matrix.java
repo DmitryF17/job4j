@@ -5,11 +5,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Matrix {
-    public static void main(String[] args) {
-        List<List<Integer>> matrix = List.of(
-                List.of(1, 2),
-                List.of(3, 4)
-        );
-        System.out.println(Stream.of(matrix.stream().flatMap(List::stream).collect(Collectors.toList())));
+    public static List matrixToList(List<List<Integer>> matrix) {
+        return matrix.stream().flatMap(List::stream).collect(Collectors.toList());
     }
 }
