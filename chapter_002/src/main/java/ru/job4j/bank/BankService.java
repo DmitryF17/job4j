@@ -9,37 +9,19 @@ public class BankService {
     private Map<User, List<Account>> users = new HashMap<>();
 
     public void addUser(User user) {
-        if (!users.containsKey(user.getPassport())) {
-            users.put(user, new ArrayList<Account>());
-        }
+        users.putIfAbsent(user, new ArrayList<>());
     }
 
     public void addAccount(String passport, Account account) {
-        User user = findByPassport(passport);
-        List<Account> ac  = users.get(user);
-        if (!ac.contains(account)) {
-            users.get(user).add(account);
-        }
+        users.get(findByPassport(passport)).stream().filter(acc -> !acc.equals(account)).findFirst().of(users.get(findByPassport(passport)).add(account));
     }
 
     public User findByPassport(String passport) {
-        for (User pas : users.keySet()) {
-            if (pas.getPassport().equals(passport)) {
-                return pas;
-            }
-        }
-        return  null;
+        return users.keySet().stream().filter(user -> user.getPassport().equals(passport)).findFirst().orElse(null);
     }
 
     public Account findByRequisite(String passport, String requisite) {
-        User user = findByPassport(passport);
-        List<Account> ac  = users.get(user);
-        for (Account acc : ac) {
-            if (acc.getRequisite().equals(requisite)) {
-                return acc;
-            }
-        }
-        return null;
+        return users.get(findByPassport(passport)).stream().filter(account -> account.getRequisite().equals(requisite)).findFirst().orElse(null);
     }
 
     public boolean transferMoney(String srcPassport, String srcRequisite,
