@@ -2,8 +2,6 @@ package ru.job4j.bank;
 
 import org.junit.Test;
 
-import java.util.concurrent.ConcurrentSkipListMap;
-
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
