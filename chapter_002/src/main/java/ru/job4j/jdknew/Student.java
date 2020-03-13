@@ -26,8 +26,7 @@ public class Student {
     public static List<Student> levelOf(List<Student> students, int bound) {
         return students.stream().flatMap(Stream::ofNullable).sorted(new Sortedstudents()).takeWhile(sc -> sc.getScore() > bound).collect(Collectors.toList());
     }
-
-    }
+}
 
 
 
