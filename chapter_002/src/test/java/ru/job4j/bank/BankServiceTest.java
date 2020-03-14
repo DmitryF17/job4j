@@ -43,5 +43,9 @@ public class BankServiceTest {
         boolean rsl = bank.transferMoney(user.getPassport(), "4040", user.getPassport(), "5050", 150.0);
         assertThat(rsl, is(false));
     }
-
+    @Test
+    public void userAbsent() {
+        BankService bank = new BankService();
+        assertThat(java.util.Optional.ofNullable(bank.findByPassport("3434")), is(java.util.Optional.ofNullable(null)));
+    }
 }
