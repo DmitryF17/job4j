@@ -39,7 +39,7 @@ public class Student {
                 return false;
             }
             Student student = (Student) o;
-            return Objects.equals(student.name, score);
+            return Objects.equals(student.name, name) && Objects.equals(student.score, score);
     }
 }
 
