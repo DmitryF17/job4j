@@ -2,12 +2,14 @@ package ru.job4j.lambda;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public class Group {
 
-    public static int sections(List<Student> students) {
+    public static Map<String, Set<String>> sections(List<Student> students) {
         return students.stream().flatMap(student ->
                 student.getUnits().stream()
                         .map(group -> new Holder(group, student.getName()))
