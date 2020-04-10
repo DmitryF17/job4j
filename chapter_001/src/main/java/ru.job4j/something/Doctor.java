@@ -1,4 +1,4 @@
-package ru.job4j;
+package ru.job4j.something;
 public class Doctor extends Profession {
     private String diagnose;
     public Doctor() {

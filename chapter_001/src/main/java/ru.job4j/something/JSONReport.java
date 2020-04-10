@@ -1,4 +1,4 @@
-package ru.job4j;
+package ru.job4j.something;
 public class JSONReport extends TextReport {
     @Override
     public String generate(String name, String body) {

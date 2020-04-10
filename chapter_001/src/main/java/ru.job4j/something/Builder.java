@@ -1,4 +1,4 @@
-package ru.job4j;
+package ru.job4j.something;
 public class Builder extends Engeneer {
     private String house;
     public Builder() {

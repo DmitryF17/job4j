@@ -1,4 +1,4 @@
-package ru.job4j;
+package ru.job4j.something;
 public class ReportUsage {
     public static void main(String[] args) {
         JSONReport report = new JSONReport();
