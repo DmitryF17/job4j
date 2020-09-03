@@ -8,7 +8,7 @@ public class StartUI {
 
     private static Consumer<String> output;
 
-    public void init(Input input, Store store, UserAction[] actions) {
+    public void init(Input input, Store store, UserAction[] actions, Consumer<String> output) {
         boolean run = true;
         while (run) {
             this.showMenu(actions, output);
@@ -26,19 +26,25 @@ public class StartUI {
         }
     }
 
-    public static void main(String[] args) {
-        Input validate = new ValidateInput(
-                new ConsoleInput()
-        );
+    public static void main(String[] args) throws Exception {
+        Input input = new ConsoleInput();
+        Input validate = new ValidateInput(input);
         try (Store tracker = new SqlTracker()) {
             tracker.init();
-           UserAction[] actions = {
-                    new CreateAction()
+            UserAction[] actions = {
+                    new CreateAction(),
+                    new ReplaceAction(),
+                    new DeleteAction(),
+                    new FindAllAction(),
+                    new FindNameAction(),
+                    new FindIdAction(),
+                    new ExitAction()
             };
-            new StartUI().init(validate, tracker, actions);
+            new StartUI().init(validate, tracker, actions, System.out::println);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 }
+
 

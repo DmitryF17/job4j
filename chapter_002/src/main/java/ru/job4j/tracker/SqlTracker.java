@@ -17,7 +17,7 @@ public class SqlTracker implements Store {
             Class.forName(config.getProperty("driver-class-name"));
             cn = DriverManager.getConnection(
                     config.getProperty("url"),
-                    config.getProperty("postgres"),
+                    config.getProperty("username"),
                     config.getProperty("password")
             );
         } catch (Exception e) {
@@ -35,10 +35,14 @@ public class SqlTracker implements Store {
     @Override
     public Item add(Item item) {
         try {
-            PreparedStatement st = cn.prepareStatement("insert into  item (id,name)  values  (?, ?)");
-            st.setString(1, item.getId());
-            st.setString(2, item.getName());
+            PreparedStatement st = cn.prepareStatement("insert into  item (name)  values  (?)", Statement.RETURN_GENERATED_KEYS);
+            st.setString(1, item.getName());
             st.executeQuery();
+            try (ResultSet generatedKeys = st.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    System.out.println(generatedKeys.getInt(1));
+                }
+            }
             st.close();
         } catch (Exception e) {
             e.printStackTrace();
@@ -59,7 +63,7 @@ public class SqlTracker implements Store {
         try {
             PreparedStatement st = cn.prepareStatement("update item set name = ? where id = ?");
             st.setString(1, item.getName());
-            st.setString(2, item.getId());
+            st.setInt(2, item.getId());
             st.executeQuery();
             st.close();
             whenreplaced++;
@@ -108,7 +112,7 @@ public class SqlTracker implements Store {
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 var item = new Item(rs.getString("name"));
-                item.setId(rs.getString("id"));
+                item.setId(rs.getInt("id"));
                 item.setName(rs.getString("name"));
                 res.add(item);
             }
@@ -135,7 +139,7 @@ public class SqlTracker implements Store {
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 var item = new Item(rs.getString("name"));
-                item.setId(rs.getString("id"));
+                item.setId(rs.getInt("id"));
                 item.setName(rs.getString("name"));
                 res.add(item);
             }
@@ -162,7 +166,7 @@ public class SqlTracker implements Store {
             st.setString(1, id);
             ResultSet rs = st.executeQuery();
             item = new Item(rs.getString("name"));
-            item.setId(rs.getString("id"));
+            item.setId(rs.getInt("id"));
             item.setName(rs.getString("name"));
             st.close();
         } catch (Exception e) {
