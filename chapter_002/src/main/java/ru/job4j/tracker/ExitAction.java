@@ -10,6 +10,11 @@ public class ExitAction implements UserAction {
 
     @Override
     public boolean execute(Input input, Store store, Consumer<String> output) {
+        try {
+            store.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return false;
     }
 }

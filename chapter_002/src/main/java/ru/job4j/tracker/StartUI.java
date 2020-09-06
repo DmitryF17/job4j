@@ -6,7 +6,7 @@ import java.util.function.Consumer;
 
 public class StartUI {
 
-    private static Consumer<String> output;
+    private static Consumer<String> output = System.out::println;
 
     public void init(Input input, Store store, UserAction[] actions, Consumer<String> output) {
         boolean run = true;
@@ -26,7 +26,7 @@ public class StartUI {
         }
     }
 
-    public static void main(String[] args) throws Exception {
+    public void createrunup() {
         Input input = new ConsoleInput();
         Input validate = new ValidateInput(input);
         try (Store tracker = new SqlTracker()) {
@@ -40,10 +40,15 @@ public class StartUI {
                     new FindIdAction(),
                     new ExitAction()
             };
-            new StartUI().init(validate, tracker, actions, System.out::println);
+            new StartUI().init(validate, tracker, actions, output);
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public static void main(String[] args) {
+        StartUI start = new StartUI();
+        start.createrunup();
     }
 }
 
