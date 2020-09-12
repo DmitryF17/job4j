@@ -1,7 +1,6 @@
 package ru.job4j.tracker;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -10,14 +9,8 @@ public class MemTracker {
     private int position = 0;
 
     public Item add(Item item) {
-        item.setId(this.generateId());
         items.add(item);
         return item;
-    }
-
-    private String generateId() {
-        Random rm = new Random();
-        return String.valueOf(rm.nextLong() + System.currentTimeMillis());
     }
 
     public List<Item> findAll() {
@@ -34,7 +27,7 @@ public class MemTracker {
         return nameskey;
     }
 
-    public Item findById(String id) {
+    public Item findById(int id) {
         int i = indexOf(id);
         if (i != -1) {
             return items.get(i);
@@ -42,7 +35,7 @@ public class MemTracker {
         return null;
     }
 
-    public boolean replace(String id, Item item) {
+    public boolean replace(int id, Item item) {
         boolean res = false;
         int pos = indexOf(id);
         if (pos != -1) {
@@ -54,7 +47,7 @@ public class MemTracker {
         return res;
     }
 
-    public boolean delete(String id) {
+    public boolean delete(int id) {
         boolean res = false;
         int pos = indexOf(id);
         if (pos != -1) {
@@ -64,10 +57,11 @@ public class MemTracker {
         return res;
     }
 
-    private int indexOf(String id) {
+    private int indexOf(int id) {
         int rsl = -1;
         for (Item item : items) {
-            if (item.getId().equals(id)) {
+            int ind = Integer.parseInt(item.getId());
+            if (ind > 0) {
                 rsl++;
                 break;
             }
